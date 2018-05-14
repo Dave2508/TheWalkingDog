@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="elevacion_ActionBar">4dp</dimen>
+    <dimen name="lado_estrella">40dp</dimen>
+    <dimen name="margen_toolbar">80dp</dimen>
+    <dimen name="margen_name_toolbar2">25dp</dimen>
+    <dimen name="corner_radius_cardview">4dp</dimen>
+</resources>
