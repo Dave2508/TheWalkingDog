@@ -5,33 +5,52 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.content.Intent;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+
+    ArrayList<Mascota> mascotas;
+    private RecyclerView listaMascotas;
+    public MascotaAdaptador adaptador;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar miActionBar = (Toolbar) findViewById(R.id.miActionBar);
+        Toolbar miActionBar = findViewById(R.id.miActionBar);
         setSupportActionBar(miActionBar);
 
-        Mascotas = new ArrayList<Mascota>();
+        listaMascotas = findViewById(R.id.rvMascotas);
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
 
-        Mascotas.add(new Mascota(R.drawable.schnauzer,R.drawable.bone, "Jack", 0,R.drawable.bone_like));
-        Mascotas.add(new Mascota(R.drawable.french_poodle,R.drawable.bone, "Bob", 0,R.drawable.bone_like));
-        Mascotas.add(new Mascota(R.drawable.pastor_alem_n,R.drawable.bone, "Sam", 0,R.drawable.bone_like));
-        Mascotas.add(new Mascota(R.drawable.beagle,R.drawable.bone, "Zack", 0,R.drawable.bone_like));
-        Mascotas.add(new Mascota(R.drawable.dachshund,R.drawable.bone, "Slinky", 0,R.drawable.bone_like));
-        Mascotas.add(new Mascota(R.drawable.labrador,R.drawable.bone, "Chester", 0,R.drawable.bone_like));
-        Mascotas.add(new Mascota(R.drawable.pitbull,R.drawable.bone, "Jhonny", 0,R.drawable.bone_like));
+        listaMascotas.setLayoutManager(llm);
 
-        ArrayList<String> nombreMascota = new ArrayList<>();
-        for (Mascota mascota : Mascotas){
-            nombreMascota.add(mascota.getNombre_mascota());
-        }
+        inicializarListaMascotas();
+        inicializarAdaptador();
+    }
+
+    public void inicializarAdaptador() {
+        MascotaAdaptador adaptador = new MascotaAdaptador(mascotas, this);
+        listaMascotas.setAdapter(adaptador);
+    }
+
+    public void inicializarListaMascotas() {
+
+        mascotas = new ArrayList<Mascota>();
+
+        mascotas.add(new Mascota(R.drawable.schnauzer, "Jack", 10));
+        mascotas.add(new Mascota(R.drawable.french_poodle, "Bob", 7));
+        mascotas.add(new Mascota(R.drawable.pastor_alem_n, "Sam", 4));
+        mascotas.add(new Mascota(R.drawable.beagle,"Zack", 9));
+        mascotas.add(new Mascota(R.drawable.dachshund,"Slinky", 1));
+        mascotas.add(new Mascota(R.drawable.labrador,"Chester", 6));
+        mascotas.add(new Mascota(R.drawable.pitbull, "Jhonny", 8));
     }
 
     public void GoMascotasFav (View v){

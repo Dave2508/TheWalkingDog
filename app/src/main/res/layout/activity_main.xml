@@ -11,11 +11,20 @@
         layout="@layout/actionbar">
     </include>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rvMascotas"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/miActionBar"
-        />
+        android:layout_below="@+id/miActionBar">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvMascotas"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/RV_padding_left"
+            android:paddingRight="@dimen/RV_padding_right"
+            >
+        </android.support.v7.widget.RecyclerView>
+
+    </RelativeLayout>
 
 </RelativeLayout>
